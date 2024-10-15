@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- Rename repository and artifact from `keyple-android-demo-control` to `keyple-demo-ticketing-control-app`
+- Change `minSdk` from `24` -> `26`
+### Upgraded
+- keyple-demo-common-lib `2.0.1-SNAPSHOT` -> keyple-demo-ticketing-common-lib `2.0.2-SNAPSHOT`
+- Keyple components
+  - keyple-service-java-lib `3.3.1` -> `3.3.3`
+  - keyple-card-calypso-java-lib `3.1.3` -> `3.1.4`
 
 ## [2024.09.20]
 ### Fixed
@@ -16,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [2024.04.23]
 ### Upgraded
-- keyple-demo-ticketing-common-lib `2.0.0-SNAPSHOT` -> `2.0.1-SNAPSHOT`
+- keyple-demo-common-lib `2.0.0-SNAPSHOT` -> `2.0.1-SNAPSHOT`
 - All Keyple components (compiled to java 8)
     - keypop-reader-java-api `2.0.0` -> `2.0.1`
     - keypop-calypso-card-java-api `2.0.0` -> `2.1.0`
@@ -44,7 +52,7 @@ New dependencies
 
 ## [2023.06.01]
 ### Upgraded
-- `keyple-demo-ticketing-common-lib:2.0.0-SNAPSHOT`
+- `keyple-demo-common-lib:2.0.0-SNAPSHOT`
 - `calypsonet-terminal-reader-java-api:1.3.0`
 - `calypsonet-terminal-calypso-java-api:1.8.0`
 - `keyple-service-java-lib:2.3.1`
@@ -73,7 +81,7 @@ New dependencies
 - Build process using flavours mechanism replaced by standard single build process.
 - Major refactoring of the source code.
 ### Upgraded
-- `keyple-demo-ticketing-common-lib:1.0.0-SNAPSHOT`
+- `keyple-demo-common-lib:1.0.0-SNAPSHOT`
 - `calypsonet-terminal-reader-java-api:1.1.0`
 - `calypsonet-terminal-calypso-java-api:1.4.1`
 - `keyple-service-java-lib:2.1.1`
