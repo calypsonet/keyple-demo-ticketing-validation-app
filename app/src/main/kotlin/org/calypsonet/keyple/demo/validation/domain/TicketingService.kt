@@ -13,7 +13,6 @@ package org.calypsonet.keyple.demo.validation.domain
 
 import android.app.Activity
 import android.content.Context
-import java.time.LocalDateTime
 import javax.inject.Inject
 import org.calypsonet.keyple.demo.common.constant.CardConstant
 import org.calypsonet.keyple.demo.validation.data.CardRepository
@@ -40,6 +39,7 @@ import org.eclipse.keypop.reader.selection.CardSelectionManager
 import org.eclipse.keypop.reader.selection.CardSelectionResult
 import org.eclipse.keypop.reader.selection.ScheduledCardSelectionsResponse
 import org.eclipse.keypop.reader.spi.CardReaderObserverSpi
+import org.threeten.bp.LocalDateTime
 import timber.log.Timber
 
 @AppScoped

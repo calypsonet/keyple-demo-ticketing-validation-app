@@ -6,14 +6,14 @@ This demo is an open source project provided by the [Calypso Networks Associatio
 the [Eclipse Keyple SDK](https://keyple.org) in a typical use case that can serve as a basis for building a ticketing
 ecosystem based on contactless cards and/or NFC smartphones.
 
-The source code and APK are available at  [calypsonet/keyple-android-demo-validation/releases](https://github.com/calypsonet/keyple-android-demo-validation/releases)
+The source code and APK are available at  [calypsonet/keyple-demo-ticketing-validation-app/releases](https://github.com/calypsonet/keyple-demo-ticketing-validation-app/releases)
 
 The code can be easily adapted to other cards, terminals and business logic.
 
 It shows how to check if a card is authorized to enter a controlled area (entering the transport network with
 a Season Pass and/or Multi-trip ticket), a validation event is added in the event log to be checked by the
-[Keyple Demo Control](https://github.com/calypsonet/keyple-android-demo-control)  application.
-The contracts are loaded in the Calypso card with the Android application of the [Keyple Reload Demo package](https://github.com/calypsonet/keyple-java-demo-remote).
+[Keyple Demo Control](https://github.com/calypsonet/keyple-demo-ticketing-control-app)  application.
+The contracts are loaded in the Calypso card with the Android application of the [Keyple Reload Demo package](https://github.com/calypsonet/keyple-demo-ticketing-reloading-remote).
 
 The demo application was tested on the following terminals:
 - `Famoco FX205` via the open source plugins [Famoco](https://github.com/calypsonet/keyple-famoco) (for SAM access) and [Android NFC](https://keyple.org/components-java/plugins/nfc/) (for card access).
@@ -28,14 +28,14 @@ As all the exchanges made with the card are cryptographically secured by a secur
 ## Keyple Demos
 
 This demo is part of a set of three demos:
-* [Keyple Reload Demo](https://github.com/calypsonet/keyple-java-demo-remote)
-* [Keyple Validation Demo](https://github.com/calypsonet/keyple-android-demo-validation)
-* [Keyple Control Demo](https://github.com/calypsonet/keyple-android-demo-control)
+* [Keyple Reload Demo](https://github.com/calypsonet/keyple-demo-ticketing-reloading-remote)
+* [Keyple Validation Demo](https://github.com/calypsonet/keyple-demo-ticketing-validation-app)
+* [Keyple Control Demo](https://github.com/calypsonet/keyple-demo-ticketing-control-app)
 
 These demos are all based on a common library that defines elements such as constants and data structures implemented 
-for the logic of the ticketing application: [Keyple Demo Common Library](https://github.com/calypsonet/keyple-demo-common-lib).
+for the logic of the ticketing application: [Keyple Demo Common Library](https://github.com/calypsonet/keyple-demo-ticketing-common-lib).
 
-Please refer to the [README](https://github.com/calypsonet/keyple-demo-common-lib/blob/main/README.md) 
+Please refer to the [README](https://github.com/calypsonet/keyple-demo-ticketing-common-lib/blob/main/README.md) 
 file of this library to discover these data structures.
 
 ## Validation Procedure

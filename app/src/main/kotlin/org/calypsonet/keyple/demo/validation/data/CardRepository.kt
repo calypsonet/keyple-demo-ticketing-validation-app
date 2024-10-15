@@ -12,8 +12,6 @@
 package org.calypsonet.keyple.demo.validation.data
 
 import android.content.Context
-import java.time.LocalDate
-import java.time.LocalDateTime
 import org.calypsonet.keyple.demo.common.constant.CardConstant
 import org.calypsonet.keyple.demo.common.model.EventStructure
 import org.calypsonet.keyple.demo.common.model.type.DateCompact
@@ -37,6 +35,8 @@ import org.eclipse.keypop.calypso.card.transaction.ChannelControl
 import org.eclipse.keypop.calypso.card.transaction.SecureRegularModeTransactionManager
 import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting
 import org.eclipse.keypop.reader.CardReader
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
 import timber.log.Timber
 
 class CardRepository {

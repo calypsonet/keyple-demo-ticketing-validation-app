@@ -14,7 +14,6 @@ package org.calypsonet.keyple.demo.validation.ui
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
-import java.time.format.DateTimeFormatter
 import java.util.*
 import org.calypsonet.keyple.demo.validation.R
 import org.calypsonet.keyple.demo.validation.data.model.AppSettings
@@ -22,6 +21,7 @@ import org.calypsonet.keyple.demo.validation.data.model.CardReaderResponse
 import org.calypsonet.keyple.demo.validation.data.model.ReaderType
 import org.calypsonet.keyple.demo.validation.data.model.Status
 import org.calypsonet.keyple.demo.validation.databinding.ActivityCardSummaryBinding
+import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
 
 class CardSummaryActivity : BaseActivity() {

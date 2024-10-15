@@ -12,9 +12,9 @@
 package org.calypsonet.keyple.demo.validation.data.model
 
 import android.os.Parcelable
-import java.time.LocalDate
-import java.time.LocalDateTime
 import kotlinx.android.parcel.Parcelize
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
 
 @Parcelize
 data class CardReaderResponse(
