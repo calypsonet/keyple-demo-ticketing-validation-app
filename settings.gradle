@@ -1,3 +1,3 @@
-rootProject.name = "keyple-android-demo-validation"
+rootProject.name = "keyple-demo-ticketing-validation-app"
 
 include ':app'

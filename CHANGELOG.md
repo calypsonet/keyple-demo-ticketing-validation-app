@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- Rename repository and artifact from `keyple-android-demo-control` to `keyple-demo-ticketing-control-app`
+- Change `minSdk` from `24` -> `26`
+### Upgraded
+- keyple-demo-common-lib `2.0.1-SNAPSHOT` -> keyple-demo-ticketing-common-lib `2.0.2-SNAPSHOT`
+- Keyple components
+  - keyple-service-java-lib `3.3.1` -> `3.3.3`
+  - keyple-card-calypso-java-lib `3.1.3` -> `3.1.4`
 
 ## [2024.09.20]
 ### Fixed
@@ -85,11 +93,11 @@ New dependencies
 - `keyple-plugin-cna-flowbird-android-java-lib-2.0.2-mock` (mocked library)
 - `keyple-util-java-lib:2.3.0`
 
-[Unreleased]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2024.09.20...HEAD
-[2024.09.20]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2024.04.23...2024.09.20
-[2024.04.23]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2023.12.06...2024.04.23
-[2023.12.06]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2023.06.01...2023.12.06
-[2023.06.01]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2023.03.03...2023.06.01
-[2023.03.03]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2023.02.24...2023.03.03
-[2023.02.24]: https://github.com/calypsonet/keyple-android-demo-validation/compare/2022.11.18...2023.02.24
-[2022.11.18]: https://github.com/calypsonet/keyple-android-demo-validation/compare/v2021.11...2022.11.18
+[Unreleased]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2024.09.20...HEAD
+[2024.09.20]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2024.04.23...2024.09.20
+[2024.04.23]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2023.12.06...2024.04.23
+[2023.12.06]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2023.06.01...2023.12.06
+[2023.06.01]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2023.03.03...2023.06.01
+[2023.03.03]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2023.02.24...2023.03.03
+[2023.02.24]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/2022.11.18...2023.02.24
+[2022.11.18]: https://github.com/calypsonet/keyple-demo-ticketing-validation-app/compare/v2021.11...2022.11.18
