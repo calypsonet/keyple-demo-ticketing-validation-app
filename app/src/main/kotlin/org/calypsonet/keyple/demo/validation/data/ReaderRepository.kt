@@ -39,9 +39,9 @@ import org.calypsonet.keyple.plugin.flowbird.contactless.FlowbirdSupportContactl
 import org.eclipse.keyple.core.service.KeyplePluginException
 import org.eclipse.keyple.core.service.Plugin
 import org.eclipse.keyple.core.service.SmartCardServiceProvider
-import org.eclipse.keyple.plugin.android.nfc.AndroidNfcPlugin
+import org.eclipse.keyple.plugin.android.nfc.AndroidNfcConfig
+import org.eclipse.keyple.plugin.android.nfc.AndroidNfcConstants
 import org.eclipse.keyple.plugin.android.nfc.AndroidNfcPluginFactoryProvider
-import org.eclipse.keyple.plugin.android.nfc.AndroidNfcReader
 import org.eclipse.keyple.plugin.android.nfc.AndroidNfcSupportedProtocols
 import org.eclipse.keypop.reader.CardReader
 import org.eclipse.keypop.reader.ConfigurableCardReader
@@ -111,8 +111,8 @@ constructor(
 
   private fun initFamocoReader() {
     readerType = ReaderType.FAMOCO
-    cardPluginName = AndroidNfcPlugin.PLUGIN_NAME
-    cardReaderName = AndroidNfcReader.READER_NAME
+    cardPluginName = AndroidNfcConstants.PLUGIN_NAME
+    cardReaderName = AndroidNfcConstants.READER_NAME
     cardReaderProtocols.put(
         AndroidNfcSupportedProtocols.ISO_14443_4.name, CALYPSO_CARD_LOGICAL_PROTOCOL)
     samPluginName = AndroidFamocoPlugin.PLUGIN_NAME
@@ -149,7 +149,8 @@ constructor(
             when (readerType) {
               ReaderType.BLUEBIRD -> BluebirdPluginFactoryProvider.getFactory(activity)
               ReaderType.COPPERNIC -> Cone2PluginFactoryProvider.getFactory(activity)
-              ReaderType.FAMOCO -> AndroidNfcPluginFactoryProvider(activity).getFactory()
+              ReaderType.FAMOCO ->
+                  AndroidNfcPluginFactoryProvider.provideFactory(AndroidNfcConfig(activity))
               ReaderType.FLOWBIRD -> { // Init files used to sounds and colors from assets
                 val mediaFiles: List<String> =
                     listOf("1_default_en.xml", "success.mp3", "error.mp3")

@@ -79,7 +79,11 @@ class CardRepository {
         // Step 1 - Open a Validation session reading the environment record.
         cardTransaction
             .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
-            .prepareReadRecord(CardConstant.SFI_ENVIRONMENT_AND_HOLDER, 1)
+            .prepareReadRecords(
+                CardConstant.SFI_ENVIRONMENT_AND_HOLDER,
+                1,
+                1,
+                CardConstant.ENVIRONMENT_HOLDER_RECORD_SIZE_BYTES)
             .processCommands(ChannelControl.KEEP_OPEN)
 
         // Step 2 - Unpack environment structure from the binary present in the environment record.
@@ -103,7 +107,8 @@ class CardRepository {
 
         // Step 5 - Read and unpack the last event record.
         cardTransaction
-            .prepareReadRecord(CardConstant.SFI_EVENTS_LOG, 1)
+            .prepareReadRecords(
+                CardConstant.SFI_EVENTS_LOG, 1, 1, CardConstant.EVENT_RECORD_SIZE_BYTES)
             .processCommands(ChannelControl.KEEP_OPEN)
 
         val efEventLog = calypsoCard.getFileBySfi(CardConstant.SFI_EVENTS_LOG)
@@ -170,7 +175,11 @@ class CardRepository {
 
           // Step 11.1 - Read and unpack the contract record for the index being iterated.
           cardTransaction
-              .prepareReadRecord(CardConstant.SFI_CONTRACTS, record)
+              .prepareReadRecords(
+                  CardConstant.SFI_CONTRACTS,
+                  record,
+                  record,
+                  CardConstant.CONTRACT_RECORD_SIZE_BYTES)
               .processCommands(ChannelControl.KEEP_OPEN)
 
           val efContractParser = calypsoCard.getFileBySfi(CardConstant.SFI_CONTRACTS)
