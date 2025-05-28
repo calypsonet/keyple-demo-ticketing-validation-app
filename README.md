@@ -16,12 +16,12 @@ a Season Pass and/or Multi-trip ticket), a validation event is added in the even
 The contracts are loaded in the Calypso card with the Android application of the [Keyple Reload Demo package](https://github.com/calypsonet/keyple-demo-ticketing-reloading-remote).
 
 The demo application was tested on the following terminals:
-- `Famoco FX205` via the open source plugins [Famoco](https://github.com/calypsonet/keyple-famoco) (for SAM access) and [Android NFC](https://keyple.org/components-java/plugins/nfc/) (for card access).
+- `Famoco FX205` via the open source plugins [Famoco](https://github.com/calypsonet/keyple-famoco) (for SAM access) and [Android NFC](https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/) (for card access).
 - `Coppernic C-One 2` via the open source plugin [Coppernic](https://github.com/calypsonet/keyple-android-plugin-coppernic).
 
 The following terminals have also been tested but as they require non-open source libraries, they are not active by default (see [Using proprietary plugins](#using-proprietary-plugins))  
 - `Bluebird EF501` via the proprietary plugin [Bluebird](https://github.com/calypsonet/keyple-plugin-cna-bluebird-specific-nfc-java-lib).
-- `Flowbird Axio 2` via the proprietary plugin [Flowbird](https://github.com/calypsonet/keyple-android-plugin-flowbird).
+- `Flowbird Axio 2` via the proprietary plugin [Flowbird](https://github.com/calypsonet/keyple-plugin-cna-flowbird-android-java-lib).
 
 As all the exchanges made with the card are cryptographically secured by a security module (SAM), it is mandatory to install it in the terminal for the application to work properly.
 
