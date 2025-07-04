@@ -153,6 +153,7 @@ class ReaderActivity : BaseActivity() {
           changeDisplay(
               CardReaderResponse(
                   status = Status.INVALID_CARD,
+                  cardType = "Unknown card type",
                   contract = null,
                   validation = null,
                   errorMessage = error))
@@ -196,6 +197,7 @@ class ReaderActivity : BaseActivity() {
                 changeDisplay(
                     CardReaderResponse(
                         status = Status.ERROR,
+                        cardType = "Unknown card type",
                         nbTicketsLeft = 0,
                         contract = "",
                         validation = null,
