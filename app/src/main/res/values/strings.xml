@@ -3,6 +3,7 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="card_type">%1$s</string>
     <string name="card_reading_title">Card reading</string>
     <string name="no_tickets_title">No valid title</string>
     <string name="valid_title">Validation</string>

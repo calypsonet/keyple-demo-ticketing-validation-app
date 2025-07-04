@@ -29,6 +29,7 @@ import org.calypsonet.keyple.demo.validation.data.model.Status
 import org.calypsonet.keyple.demo.validation.data.model.Validation
 import org.calypsonet.keyple.demo.validation.data.model.mapper.ValidationMapper
 import org.eclipse.keyple.card.calypso.CalypsoExtensionService
+import org.eclipse.keyple.core.util.HexUtil
 import org.eclipse.keypop.calypso.card.WriteAccessLevel
 import org.eclipse.keypop.calypso.card.card.CalypsoCard
 import org.eclipse.keypop.calypso.card.transaction.ChannelControl
@@ -37,14 +38,14 @@ import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySettin
 import org.eclipse.keypop.reader.CardReader
 import timber.log.Timber
 
-class CardRepository {
+class CalypsoCardRepository {
 
   fun executeValidationProcedure(
       validationDateTime: LocalDateTime,
       context: Context,
       validationAmount: Int,
       cardReader: CardReader,
-      calypsoCard: CalypsoCard,
+      smartCard: CalypsoCard,
       cardSecuritySettings: SymmetricCryptoSecuritySetting,
       locations: List<Location>
   ): CardReaderResponse {
@@ -62,7 +63,7 @@ class CardRepository {
     cardTransaction =
         try {
           calypsoCardApiFactory.createSecureRegularModeTransactionManager(
-              cardReader, calypsoCard, cardSecuritySettings)
+              cardReader, smartCard, cardSecuritySettings)
         } catch (e: Exception) {
           Timber.w(e)
           status = Status.ERROR
@@ -85,7 +86,7 @@ class CardRepository {
             .processCommands(ChannelControl.KEEP_OPEN)
 
         // Step 2 - Unpack environment structure from the binary present in the environment record.
-        val efEnvironmentHolder = calypsoCard.getFileBySfi(CardConstant.SFI_ENVIRONMENT_AND_HOLDER)
+        val efEnvironmentHolder = smartCard.getFileBySfi(CardConstant.SFI_ENVIRONMENT_AND_HOLDER)
         val environmentContent = efEnvironmentHolder.data.content
         val environment = EnvironmentHolderStructureParser().parse(environmentContent)
 
@@ -109,7 +110,7 @@ class CardRepository {
                 CardConstant.SFI_EVENTS_LOG, 1, 1, CardConstant.EVENT_RECORD_SIZE_BYTES)
             .processCommands(ChannelControl.KEEP_OPEN)
 
-        val efEventLog = calypsoCard.getFileBySfi(CardConstant.SFI_EVENTS_LOG)
+        val efEventLog = smartCard.getFileBySfi(CardConstant.SFI_EVENTS_LOG)
         val eventContent = efEventLog.data.content
         val event = EventStructureParser().parse(eventContent)
 
@@ -180,7 +181,7 @@ class CardRepository {
                   CardConstant.CONTRACT_RECORD_SIZE_BYTES)
               .processCommands(ChannelControl.KEEP_OPEN)
 
-          val efContractParser = calypsoCard.getFileBySfi(CardConstant.SFI_CONTRACTS)
+          val efContractParser = smartCard.getFileBySfi(CardConstant.SFI_CONTRACTS)
           val contractContent = efContractParser.data.allRecordsContent[record]!!
           val contract = ContractStructureParser().parse(contractContent)
 
@@ -224,7 +225,7 @@ class CardRepository {
               contractPriority == PriorityCode.STORED_VALUE) {
 
             val nbContractRecords =
-                when (calypsoCard.productType) {
+                when (smartCard.productType) {
                   CalypsoCard.ProductType.BASIC -> 1
                   CalypsoCard.ProductType.LIGHT -> 2
                   else -> 4
@@ -236,7 +237,7 @@ class CardRepository {
                 .prepareReadCounter(CardConstant.SFI_COUNTERS, nbContractRecords)
                 .processCommands(ChannelControl.KEEP_OPEN)
 
-            val efCounter = calypsoCard.getFileBySfi(CardConstant.SFI_COUNTERS)
+            val efCounter = smartCard.getFileBySfi(CardConstant.SFI_COUNTERS)
             val counterValue = efCounter.data.getContentAsCounterValue(record)
 
             // Step 11.5.2 - If the counter value is 0 update the associated ContractPriorty field
@@ -360,6 +361,7 @@ class CardRepository {
 
     return CardReaderResponse(
         status = status,
+        cardType = "CALYPSO: DF name " + HexUtil.toHex(smartCard.dfName),
         nbTicketsLeft = nbTicketsLeft,
         contract = "",
         validation = validation,

@@ -9,19 +9,9 @@
  ****************************************************************************** */
 package org.calypsonet.keyple.demo.validation.data.model
 
-import android.os.Parcelable
-import java.time.LocalDate
-import java.time.LocalDateTime
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
-data class CardReaderResponse(
-    val status: Status,
-    val cardType: String,
-    val nbTicketsLeft: Int? = null,
-    val contract: String?,
-    val validation: Validation?,
-    val eventDateTime: LocalDateTime? = null,
-    val passValidityEndDate: LocalDate? = null,
-    val errorMessage: String? = null
-) : Parcelable
+enum class CardProtocolEnum {
+  ISO_7816_LOGICAL_PROTOCOL,
+  ISO_14443_4_LOGICAL_PROTOCOL,
+  MIFARE_ULTRALIGHT_LOGICAL_PROTOCOL,
+  ST25_SRT512_LOGICAL_PROTOCOL
+}

@@ -35,6 +35,15 @@ class CardSummaryActivity : BaseActivity() {
     val bundle = intent.getBundleExtra(Bundle::class.java.simpleName)!!
     val cardReaderResponse =
         bundle.getParcelable<CardReaderResponse>(CardReaderResponse::class.simpleName)
+
+    if (cardReaderResponse != null && !cardReaderResponse.cardType.isNullOrBlank()) {
+      activityCardSummaryBinding.cardTypeLabel?.visibility = View.VISIBLE
+      activityCardSummaryBinding.cardTypeLabel?.text =
+          getString(R.string.card_type, cardReaderResponse.cardType)
+    } else {
+      activityCardSummaryBinding.cardTypeLabel?.visibility = View.GONE
+    }
+
     when (cardReaderResponse?.status) {
       Status.SUCCESS -> {
         ticketingService.displayResultSuccess()

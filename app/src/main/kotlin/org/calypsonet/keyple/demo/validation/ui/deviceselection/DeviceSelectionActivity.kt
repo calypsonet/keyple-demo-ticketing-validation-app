@@ -22,7 +22,7 @@ import org.calypsonet.keyple.demo.validation.data.model.ReaderType
 import org.calypsonet.keyple.demo.validation.databinding.ActivityDeviceSelectionBinding
 import org.calypsonet.keyple.demo.validation.ui.BaseActivity
 import org.calypsonet.keyple.demo.validation.ui.SettingsActivity
-import org.calypsonet.keyple.plugin.bluebird.BluebirdPlugin
+import org.calypsonet.keyple.plugin.bluebird.BluebirdConstants
 import org.calypsonet.keyple.plugin.flowbird.FlowbirdPlugin
 
 class DeviceSelectionActivity : BaseActivity() {
@@ -37,7 +37,7 @@ class DeviceSelectionActivity : BaseActivity() {
     setContentView(activityDeviceSelectionBinding.root)
 
     // Bluebird
-    if (BluebirdPlugin.PLUGIN_NAME.contains(mock)) {
+    if (BluebirdConstants.PLUGIN_NAME.contains(mock)) {
       activityDeviceSelectionBinding.bluebirdBtn.setBackgroundColor(Color.GRAY)
     } else {
       activityDeviceSelectionBinding.bluebirdBtn.setOnClickListener {
