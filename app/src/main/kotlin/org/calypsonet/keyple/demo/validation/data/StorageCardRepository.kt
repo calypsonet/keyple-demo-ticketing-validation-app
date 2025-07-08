@@ -97,7 +97,8 @@ class StorageCardRepository {
 
         // Step 5 - Read and unpack the event record
         val eventContent =
-            storageCard.getBlocks(CardConstant.SC_EVENT_FIRST_BLOCK, CardConstant.SC_EVENT_LAST_BLOCK)
+            storageCard.getBlocks(
+                CardConstant.SC_EVENT_FIRST_BLOCK, CardConstant.SC_EVENT_LAST_BLOCK)
         val event = SCEventStructureParser().parse(eventContent)
 
         // Step 6 - Validate event version
