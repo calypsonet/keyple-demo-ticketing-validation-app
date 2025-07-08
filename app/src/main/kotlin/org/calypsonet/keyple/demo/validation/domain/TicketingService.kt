@@ -265,7 +265,7 @@ class TicketingService @Inject constructor(private var readerRepository: ReaderR
                 context = context,
                 validationAmount = 1,
                 cardReader = readerRepository.getCardReader()!!,
-                smartCard = smartCard as CalypsoCard,
+                calypsoCard = smartCard as CalypsoCard,
                 cardSecuritySettings = getSecuritySettings()!!,
                 locations = locations)
       }
@@ -276,7 +276,7 @@ class TicketingService @Inject constructor(private var readerRepository: ReaderR
                 context = context,
                 validationAmount = 1,
                 cardReader = readerRepository.getCardReader()!!,
-                smartCard = smartCard as StorageCard,
+                storageCard = smartCard as StorageCard,
                 locations = locations)
       }
       else -> {

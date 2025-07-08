@@ -41,7 +41,7 @@ class StorageCardRepository {
       context: Context,
       validationAmount: Int,
       cardReader: CardReader,
-      smartCard: StorageCard,
+      storageCard: StorageCard,
       locations: List<Location>
   ): CardReaderResponse {
     var status: Status = Status.LOADING
@@ -55,7 +55,7 @@ class StorageCardRepository {
     // Create a card transaction for validation
     val cardTransaction =
         try {
-          storageCardExtension.createStorageCardTransactionManager(cardReader, smartCard)
+          storageCardExtension.createStorageCardTransactionManager(cardReader, storageCard)
         } catch (e: Exception) {
           Timber.w(e)
           status = Status.ERROR
@@ -78,7 +78,7 @@ class StorageCardRepository {
 
         // Step 2 - Unpack environment structure
         val environmentContent =
-            smartCard.getBlocks(
+            storageCard.getBlocks(
                 CardConstant.SC_ENVIRONMENT_AND_HOLDER_FIRST_BLOCK,
                 CardConstant.SC_ENVIRONMENT_AND_HOLDER_LAST_BLOCK)
         val environment = SCEnvironmentHolderStructureParser().parse(environmentContent)
@@ -97,7 +97,7 @@ class StorageCardRepository {
 
         // Step 5 - Read and unpack the event record
         val eventContent =
-            smartCard.getBlocks(CardConstant.SC_EVENT_FIRST_BLOCK, CardConstant.SC_EVENT_LAST_BLOCK)
+            storageCard.getBlocks(CardConstant.SC_EVENT_FIRST_BLOCK, CardConstant.SC_EVENT_LAST_BLOCK)
         val event = SCEventStructureParser().parse(eventContent)
 
         // Step 6 - Validate event version
@@ -114,7 +114,7 @@ class StorageCardRepository {
 
         // Step 7 - Read and unpack the contract record
         val contractContent =
-            smartCard.getBlocks(
+            storageCard.getBlocks(
                 CardConstant.SC_CONTRACT_FIRST_BLOCK, CardConstant.SC_COUNTER_LAST_BLOCK)
         val contract = SCContractStructureParser().parse(contractContent)
 
@@ -248,7 +248,7 @@ class StorageCardRepository {
 
     return CardReaderResponse(
         status = status,
-        cardType = smartCard.productType.name,
+        cardType = storageCard.productType.name,
         nbTicketsLeft = nbTicketsLeft,
         contract = "",
         validation = validation,

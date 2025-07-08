@@ -45,7 +45,7 @@ class CalypsoCardRepository {
       context: Context,
       validationAmount: Int,
       cardReader: CardReader,
-      smartCard: CalypsoCard,
+      calypsoCard: CalypsoCard,
       cardSecuritySettings: SymmetricCryptoSecuritySetting,
       locations: List<Location>
   ): CardReaderResponse {
@@ -63,7 +63,7 @@ class CalypsoCardRepository {
     cardTransaction =
         try {
           calypsoCardApiFactory.createSecureRegularModeTransactionManager(
-              cardReader, smartCard, cardSecuritySettings)
+              cardReader, calypsoCard, cardSecuritySettings)
         } catch (e: Exception) {
           Timber.w(e)
           status = Status.ERROR
@@ -86,7 +86,7 @@ class CalypsoCardRepository {
             .processCommands(ChannelControl.KEEP_OPEN)
 
         // Step 2 - Unpack environment structure from the binary present in the environment record.
-        val efEnvironmentHolder = smartCard.getFileBySfi(CardConstant.SFI_ENVIRONMENT_AND_HOLDER)
+        val efEnvironmentHolder = calypsoCard.getFileBySfi(CardConstant.SFI_ENVIRONMENT_AND_HOLDER)
         val environmentContent = efEnvironmentHolder.data.content
         val environment = EnvironmentHolderStructureParser().parse(environmentContent)
 
@@ -110,7 +110,7 @@ class CalypsoCardRepository {
                 CardConstant.SFI_EVENTS_LOG, 1, 1, CardConstant.EVENT_RECORD_SIZE_BYTES)
             .processCommands(ChannelControl.KEEP_OPEN)
 
-        val efEventLog = smartCard.getFileBySfi(CardConstant.SFI_EVENTS_LOG)
+        val efEventLog = calypsoCard.getFileBySfi(CardConstant.SFI_EVENTS_LOG)
         val eventContent = efEventLog.data.content
         val event = EventStructureParser().parse(eventContent)
 
@@ -181,7 +181,7 @@ class CalypsoCardRepository {
                   CardConstant.CONTRACT_RECORD_SIZE_BYTES)
               .processCommands(ChannelControl.KEEP_OPEN)
 
-          val efContractParser = smartCard.getFileBySfi(CardConstant.SFI_CONTRACTS)
+          val efContractParser = calypsoCard.getFileBySfi(CardConstant.SFI_CONTRACTS)
           val contractContent = efContractParser.data.allRecordsContent[record]!!
           val contract = ContractStructureParser().parse(contractContent)
 
@@ -225,7 +225,7 @@ class CalypsoCardRepository {
               contractPriority == PriorityCode.STORED_VALUE) {
 
             val nbContractRecords =
-                when (smartCard.productType) {
+                when (calypsoCard.productType) {
                   CalypsoCard.ProductType.BASIC -> 1
                   CalypsoCard.ProductType.LIGHT -> 2
                   else -> 4
@@ -237,7 +237,7 @@ class CalypsoCardRepository {
                 .prepareReadCounter(CardConstant.SFI_COUNTERS, nbContractRecords)
                 .processCommands(ChannelControl.KEEP_OPEN)
 
-            val efCounter = smartCard.getFileBySfi(CardConstant.SFI_COUNTERS)
+            val efCounter = calypsoCard.getFileBySfi(CardConstant.SFI_COUNTERS)
             val counterValue = efCounter.data.getContentAsCounterValue(record)
 
             // Step 11.5.2 - If the counter value is 0 update the associated ContractPriorty field
@@ -361,7 +361,7 @@ class CalypsoCardRepository {
 
     return CardReaderResponse(
         status = status,
-        cardType = "CALYPSO: DF name " + HexUtil.toHex(smartCard.dfName),
+        cardType = "CALYPSO: DF name " + HexUtil.toHex(calypsoCard.dfName),
         nbTicketsLeft = nbTicketsLeft,
         contract = "",
         validation = validation,
