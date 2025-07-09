@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Simplify `NOTICE.md` file content
 - Enhance `README.md` with detailed card type support, priority codes, and validation procedures
-- Remove minimum SDK version change from `26` back to `24`
+- Remove minimum SDK version change from `26` back to `24` (Bluebird support)
 ### Upgraded
 - Gradle plugins
   - `com.diffplug.spotless` `6.25.0` -> `7.0.4`
