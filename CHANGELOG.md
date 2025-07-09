@@ -5,42 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Added
-- New `.gitattributes` file for proper line endings and Git LFS configuration
-- New `settings.gradle.kts` file to replace `settings.gradle`
 - Enhanced plugin management and dependency resolution in build configuration
 - Support for Storage Cards alongside Calypso cards
-- New `CardProtocolEnum` for protocol definitions
-- New `StorageCardRepository` class for Storage Card validation procedures
-- Enhanced card type display in `CardSummaryActivity`
+- Enhanced card type display in "Card Summary" screen
 - Support for MIFARE Ultralight and ST25 SRT512 cards
-- Detailed documentation for card types and security considerations
-- Priority codes system for contract management
 - Enhanced validation procedure documentation for both card types
-- Copyright ownership notices to all source files
-- SLF4J configuration file for logging
 ### Changed
-- Upgrade Gradle wrapper from `7.6.4` to `8.4`
-- Simplify root `build.gradle.kts` configuration
-- Modernize `.gitignore` file with cleaner structure
-- Update `gradle.properties` with comprehensive project metadata and configuration
 - Simplify `NOTICE.md` file content
 - Enhance `README.md` with detailed card type support, priority codes, and validation procedures
-- Rename `LICENSE_HEADER_BSD_3-CLAUSE` to `LICENSE_HEADER`
-- Convert `settings.gradle` to `settings.gradle.kts` with enhanced configuration
-- Update project version format to `2025.07.XX`
-- Kotlin version `1.7.21` -> `1.7.20` (now defined directly in buildscript)
-- Rename `CardRepository` to `CalypsoCardRepository`
-- Update `CardReaderResponse` to include `cardType` field
-- Enhanced `TicketingService` to support both Calypso and Storage cards
-- Modernized `app/build.gradle.kts` with comprehensive build configuration
-- Updated Bluebird plugin integration to use new constants
 - Remove minimum SDK version change from `26` back to `24`
 ### Upgraded
 - Gradle plugins
   - `com.diffplug.spotless` `6.25.0` -> `7.0.4`
 - New plugins
   - `org.jetbrains.dokka` `1.9.20` (for documentation generation)
-  - `signing` and `maven-publish` plugins for release management
 - Keyple dependencies
   - `keyple-demo-ticketing-common-lib` `2.0.2-SNAPSHOT` -> `2.1.0-SNAPSHOT`
   - `keyple-card-calypso-java-lib` `3.1.7` -> `3.1.8`
@@ -52,10 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Logging dependencies
   - Replaced `com.arcao:slf4j-timber` with `uk.uuid.slf4j:slf4j-android`
 ### Removed
-- Removed complex build configuration from root `build.gradle.kts`
-- Removed old `settings.gradle` file
-- Removed extensive third-party license information from `NOTICE.md`
-- Removed `app/gradle.properties` file
 - Build dependencies
   - `javax.xml.bind:jaxb-api:2.3.1`
   - `com.sun.xml.bind:jaxb-impl:2.3.9`
