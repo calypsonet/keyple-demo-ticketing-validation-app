@@ -1,6 +1,9 @@
 /* ******************************************************************************
  * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
+ * See the NOTICE file(s) distributed with this work for additional information
+ * regarding copyright ownership.
+ *
  * This program and the accompanying materials are made available under the
  * terms of the BSD 3-Clause License which is available at
  * https://opensource.org/licenses/BSD-3-Clause.
@@ -29,6 +32,7 @@ import org.calypsonet.keyple.demo.validation.data.model.Status
 import org.calypsonet.keyple.demo.validation.data.model.Validation
 import org.calypsonet.keyple.demo.validation.data.model.mapper.ValidationMapper
 import org.eclipse.keyple.card.calypso.CalypsoExtensionService
+import org.eclipse.keyple.core.util.HexUtil
 import org.eclipse.keypop.calypso.card.WriteAccessLevel
 import org.eclipse.keypop.calypso.card.card.CalypsoCard
 import org.eclipse.keypop.calypso.card.transaction.ChannelControl
@@ -37,7 +41,7 @@ import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySettin
 import org.eclipse.keypop.reader.CardReader
 import timber.log.Timber
 
-class CardRepository {
+class CalypsoCardRepository {
 
   fun executeValidationProcedure(
       validationDateTime: LocalDateTime,
@@ -360,6 +364,7 @@ class CardRepository {
 
     return CardReaderResponse(
         status = status,
+        cardType = "CALYPSO: DF name " + HexUtil.toHex(calypsoCard.dfName),
         nbTicketsLeft = nbTicketsLeft,
         contract = "",
         validation = validation,

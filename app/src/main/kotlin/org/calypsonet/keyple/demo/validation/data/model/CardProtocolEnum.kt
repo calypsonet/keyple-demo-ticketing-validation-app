@@ -10,17 +10,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  ****************************************************************************** */
-package org.calypsonet.keyple.demo.validation.util
+package org.calypsonet.keyple.demo.validation.data.model
 
-import kotlin.coroutines.Continuation
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withTimeoutOrNull
-
-suspend inline fun <T> suspendCoroutineWithTimeout(
-    timeout: Long,
-    crossinline block: (Continuation<T>) -> Unit
-): T? {
-  var finalValue: T? = null
-  withTimeoutOrNull(timeout) { finalValue = suspendCancellableCoroutine(block = block) }
-  return finalValue
+enum class CardProtocolEnum {
+  ISO_7816_LOGICAL_PROTOCOL,
+  ISO_14443_4_LOGICAL_PROTOCOL,
+  MIFARE_ULTRALIGHT_LOGICAL_PROTOCOL,
+  ST25_SRT512_LOGICAL_PROTOCOL
 }
